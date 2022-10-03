@@ -1,6 +1,13 @@
-// Time of day month, month date, local time (wont change without page reload!)
+// Time of day month, month date, local time.
+function updateTime(){
 var today = moment();
 $("#currentDay").text(today.format("MMMM Do YYYY, h:mm:ss a"));
+};
+
+updateTime();
+setInterval(function(){
+   updateTime();
+},1000);
 
 var nineAm = $("#9am");
 var tenAm = $("#10am");
@@ -17,6 +24,7 @@ var sevenPm = $("#19pm");
 var hour = moment().hours();
 var userInput;
 var hourSpan;
+
 // Magic happens here for local storage.
 function initPage() {
 
