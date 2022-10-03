@@ -22,7 +22,10 @@ N/A
 Please refer to the LICENSE in the repo.
 
 
+https://ckostohr.github.io/Work-Day-Scheduler/
 
+
+https://github.com/CKostohr/Work-Day-Scheduler
 
 
 
