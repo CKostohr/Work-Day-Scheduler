@@ -1,3 +1,4 @@
+// Time of day month, month date, local time (wont change without page reload!)
 var today = moment();
 $("#currentDay").text(today.format("MMMM Do YYYY, h:mm:ss a"));
 
@@ -16,18 +17,7 @@ var sevenPm = $("#19pm");
 var hour = moment().hours();
 var userInput;
 var hourSpan;
-// var hourString = $(".hour").text().split(" ");
-
-// Date and Hour
-
-var interval = setInterval(function() {
-  var momentNow = moment();
-  $('#currentDay').html(momentNow.format('MMMM Do YYYY, h:mm:ss a') + ' '
-                      + momentNow.format('dddd')
-                       .substring(0,3).toUpperCase());
-  $('#currentDay').html(currentDate + " " + momentNow.format('hh:mm:ss a'));
-}, 100);
-
+// Magic happens here for local storage.
 function initPage() {
 
   console.log("Current Hour " + hour);
@@ -72,7 +62,6 @@ function background () {
       hour = parseInt(hour);
       console.log(timeTest);
       console.log(hour);
-//      console.log(this);
       if (hour > timeTest) {
           $(this).addClass("past");
       } else if (hour < timeTest) {
@@ -87,7 +76,7 @@ $(document).ready(function(){
   initPage()
   background()
 
-  // Buttons (save to Local Storage)
+  // Local save buttons
   $(".saveBtn").on("click", function(){
     userInput = $(this).siblings(".form-control").val().trim();
     console.log(userInput);
@@ -96,7 +85,7 @@ $(document).ready(function(){
     localStorage.setItem(hourSpan, JSON.stringify(userInput));
 
   })
-  // Button for clear the day
+  // Added button for clear day. This is code for said button.
   $("#clearDay").on("click", function(){
     localStorage.clear();
     initPage()
